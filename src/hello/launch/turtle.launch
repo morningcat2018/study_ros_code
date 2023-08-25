@@ -1,0 +1,16 @@
+<launch>
+    <!-- rosrun turtlesim turtlesim_node __ns:=space1 -->
+    <!-- rosrun turtlesim turtlesim_node __name:=other_name -->
+    <node pkg="turtlesim" type="turtlesim_node" name="spawn1" output="screen"/>
+    <!-- rosrun hello turtlee.py -->
+    <node pkg="hello" type="turtlee.py" name="my_plan" output="screen"/>
+    <!-- rosrun teleop_twist_keyboard teleop_twist_keyboard.py  -->
+    <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="twist_keyboard" output="screen">
+        <remap from="/cmd_vel" to="/turtle1/cmd_vel"/>
+    </node>
+    <group ns="my_group1">
+        <node pkg="turtlesim" type="turtlesim_node" name="spawn1" output="screen"/>
+    </group>
+</launch>
+<!-- roslaunch hello turtle.launch -->
+<!-- roslaunch yahboomcar_nav yahboomcar_navigation.launch use_rviz:=true map:=room1_map -->
